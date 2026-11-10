@@ -1,0 +1,22 @@
+# Jeden darmowy serwis Render (Docker) z dwoma serwerami MCP.
+services:
+  - type: web
+    name: mcp-gateway
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      # Intervals
+      - key: API_KEY
+        sync: false
+      - key: ATHLETE_ID
+        sync: false
+      # Fitatu
+      - key: FITATU_EMAIL
+        sync: false
+      - key: FITATU_PASSWORD
+        sync: false
+      # Haslo OAuth Fitatu (min. 16 znakow). Wklej to samo, co w obecnym serwisie fitatu-mcp-6cft.
+      - key: MCP_AUTH_PASSWORD
+        sync: false
